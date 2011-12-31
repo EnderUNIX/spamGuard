@@ -1,0 +1,126 @@
+
+* Development version adds/changes the following:
+
+* Thu Feb 21 23:37:12 EEST 2008
+  Version 1.9 adds the following:
+  - Exim support added. Mail adresses of spammers, found in exim main log file,
+    according to bcnt, pcnt are added to badmail file.
+
+ 
+* Wed May 23 22:14:34 EEST 2007
+  Version 1.8 adds the following:
+  - qSheff support added. IP adresses of spammers, found in qsheff.log, who send mails 
+    which has same subject more than pcnt or bcnt value will be added to badmail file.
+  - If subject filtering is enabled, subjects of spams, found in qsheff.log, will be added 
+    to qsheff.rules file. To enabling this feature, make enable_subj_filt value 1.
+  - If trimming subject string is enabled, subjects of spams, found in qsheff.log, will be added to
+    qsheff.rules file after subjects were trimmed according to your trimming strings, such as [!! SPAM],
+    [?? Probable Spam], [!!! VIRUS]. If the subject is "[!! SPAM] Mortgage", it will be trimmed as "Mortgage",
+    and then it will be added to qsheff.rules file. To enabling this feature, make enable_subj_filt value 2.
+
+
+* Fri May  6 21:13:48 EEST 2005
+  - the email address of spammer were added to Subject.
+  - New conf file  (spam-high.txt) added. the addresses in this file  will be added in badmail file.
+    when they sent mail more than pcnt value.
+  - the addresses are in ignore file never be added to badmailfrom file even if when  they sent mail
+    more then pcnt. use spam-high.txt file to block.
+  - spamguard configuration files were moved from  /usr/local/etc/ to  /usr/local/etc/spamguard directory.
+
+
+* Tue Jul 21 09:38:00 EEST 2004
+  Version 1.7 adds/changes the following:
+  - Modifying the Makefile.am to allow for installing a sysconfdir.
+    Sameh Attia <sameh.attia at tedata.net>
+  - Added FAQ file.
+
+* Tue May  28 18:03:21 EEST 2004
+  Version 1.7-BETA adds/changes the following:
+  - stat bug has been fixed.
+
+  - #@[] address is ignored for qmail.
+
+  - paranoid mode checks whether this address is in the 
+    badmailfrom file already.
+
+  - Strip '<' and '>' characters in e-mail addresses. (rmspace).
+
+  - Lots of security fixes
+
+  - parser module re-written. many security fixes
+  
+  - autogen.sh re-written to work with FreeBSD
+
+
+* Mon Oct  7 10:58:20 EEST 2002
+  Version 1.6 adds/changes the following:
+  - The Parser module is now Isoqlog's parser.
+ 
+  - Easy to use config file, spamguard.conf.
+    Now the configuration parameters can be
+    set at run time.
+
+  - Removed MTA subdirs. 
+    Installation has become very easy.
+    
+
+* Fri Mar 15 06:20:12 EET 2002
+  Version 1.5 adds/changes the following:
+  - Runs/tested on Solaris, Free/Net/Open BSD, Digital Unix,
+    Linux.
+  - Bug in ignore file processing code is fixed.
+    If you are using version 1.4, we strongly suggest 
+    that you upgrade to version 1.5.
+    Because of this, one of the hash tables has been
+    turned into linked list (ignore list).
+
+  - New Feature:
+    Now, there are three different threshold values,
+    which are treated differently by spamGuard:
+    warning, block and paranoid.
+
+  - Some code refinement.
+
+
+* Thu Feb 21 02:13:46 EET 2002
+  Version 1.4 adds/changes the following:
+  - Because of performance issues, 
+    linked lists are replaced with hash tables. 
+
+  - Postfix support.
+
+  - Some more memory leaks are cleaned.
+
+
+* Sun Feb 10 16:19:07 EET 2002
+  Version 1.3 adds/changes the following:
+  - Generic functions have been seperated from
+    the MTA-dependant code base.
+
+  - Qmail with syslog support.
+
+  - Sendmail support.
+
+  - Added code necessary to save and restore
+    the previous position on maillog file, so that
+    you won't need to rotate maillog.
+
+
+* Tue Feb  5 00:43:45 EET 2002
+  Version 1.2 adds/changes the following:
+  - Wildcard support in ignore file
+
+  - Fixed some memory leaks.
+    (Thanks to Geoff Mitchell)
+
+  - SPAMNUMBER is no longer hard-coded into binary.
+    It's now taken from stdin, so you can experiment
+    freely with your SPAMNUMBERs.
+
+
+* Tue Feb  2 02:30:40 EET 2002
+  Maintenance Release: 1.1
+
+* Thu Jan 31 03:32:10 EET 2002
+  First Public Release
+

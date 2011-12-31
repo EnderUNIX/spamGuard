@@ -1,0 +1,24 @@
+README Digital Unix.
+--------------------
+
+When you launch or run spamGuard on Digital Unix, "if" spamGuard
+woes for an Unaligned Access error e.g.:
+
+[1200]#/usr/local/bin/spamguard -w 50 -b 100 -p 2000
+Unaligned access pid=31946 <spamguard> va=0x14000d23c pc=0x3ff8019ce0c ra=0x3ff800d7134 inst=0xa560fff8
+Unaligned access pid=31946 <spamguard> va=0x14001607c pc=0x3ff8019ce0c ra=0x3ff800d7134 inst=0xa560fff8
+Unaligned access pid=31946 <spamguard> va=0x14001631c pc=0x3ff8019ce0c ra=0x3ff800d7134 inst=0xa560fff8
+
+
+Solution:
+---------
+Before running spamGuard, run the command "/usr/bin/uac p 0" (without the quotes).
+So your crontab entry can be: (all in one line)
+
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/bin/uac p 0 ;
+/usr/local/bin/spamguard -w 50 -b 100 -p 2000
+
+
+Credits:
+--------
+Thanks "Juan Enciso" <jenciso@isp.qnet.com.pe>, for notifying this.

@@ -1,0 +1,5 @@
+
+
+* If you will upgrade spamguard from an old version to  1.7 or higher version 
+After installing new spamguard version please copy your configuration files from  
+/usr/local/etc/ to /usr/local/etc/spamguard directory.

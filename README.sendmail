@@ -1,0 +1,6 @@
+Sendmail Specific
+-----------------
+
+* If you don't want to filter your customers/local users, simply type following command:
+
+  # cat /etc/mail/local-host-names | sed s/^/\*\@\*\./g > $PREFIX/spam-ignore.txt

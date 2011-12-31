@@ -1,0 +1,102 @@
+
+* Gelisim
+
+* Thu Feb 21 23:37:12 EEST 2008
+  Version 1.9 cikti.
+  - Exim destegi saglandi. Exim main log dosyanizdan bcnt, pcnt degerlerine gore belirlenen
+    spamcilerin mail adresleri badmail dosyasina eklenir.
+
+* Per May 24 01:03:23 EEST 2007
+  Version 1.8-BETA cikti.
+  - qSheff destegi saglandi. qsheff.log dosyanizda ayni konulu pcnt veya bcnt degerinden fazla sayida e-posta atan spamcilerin IP adresi badmail dosyasina ekleniyor.
+  - Spamlerin konusuna gore olusturulan kurallar qsheff.rules dosyasina eklenebilir. Bunun icin enable_subj_filt degeri 1 yapilmalidir.
+  - Spamlerin konularindan belli sozcukler atilarak qsheff.rules dosyasina uygun kurallar seklinde eklenebilir. Ornegin, e-postanin konusu "[!! SPAM] Mortgage" ise bu konu, qsheff.rules dosyasina "Mortgage" olarak eklenebilir. Bunun icin enable_subj_filt degeri 2 yapilmalidir.
+
+* Fri May  6 21:34:20 EEST 2005
+   - Uyari maillerinin Subject kismina spam yapan adres eklendi.
+   - "ignorefile" dosyasindaki adresler artik kesinlikle spamguard tarafindan engellemiyor.
+   - spam-high.txt isimli yeni dosya eklendi. Bu dosyaya  pcnt degerinden cok mesaj gonderdiginde kara listeye
+eklenecek adresler tanimlanmalidir.
+
+
+* Tue May  4 18:03:21 EEST 2004
+  Version 1.7-BETA cikti
+  - stat hatasi duzeltildi.
+  
+  - #@[] adresi hesaplanmaz.
+
+  - paranoid mode adresin daha onceden badmailfrom'a 
+    eklenip eklenmedigini kontrol eder. 
+
+  - adreslerdeki '<' ve '>' karakerlerini kaldirma (rmspace)
+
+  - Bir cok guvenlik duzeltmesi
+
+  - Parser modulu bastan yazildi
+  
+  - autogen.sh en bastan yazildi
+
+
+* Mon Oct  7 10:58:20 EEST 2002
+  Version 1.6 cikti:
+  - Parser modulu Isoqlog'unki ile degistirildi.
+
+  - spamguard.conf dosyasi daha kullanici dostu hale getirildi.
+    AYRICA konfigurasyon parametreleri calisma esnasinda ayarlanabilecek
+    hale getirildi.
+
+  - MTA altdizini kaldirildi.
+    Kurulum cok kolay hale getirildi.
+
+
+* Fri Mar 15 06:20:12 EET 2002
+  Version 1.5 teki degisiklikler:
+  - Solaris, Free/Net/Open BSD, Digital Unix,
+    Linux uzerinde testler yapildi.
+  - ignore dosyasini islerkenki bug duzeltildi.
+    Eger 1.4 versiyonunu kullaniyorsaniz siddetle 1.5 kullanmainizi
+    salik veriyoruz.
+
+  - Yeni Ozellik:
+    3 degisik esik degeri eklendi
+    warning, block and paranoid.
+
+  - Kod temizligi yapildi
+
+
+* Thu Feb 21 02:13:46 EET 2002
+  Version 1.4 taki degisiklikler:
+  - Performanstan dolayi linked listler hash tablolari ile degistirildi.
+
+  - Postfix destegi eklendi.
+
+  - Bazi hafiza akitimlari temizlendi.
+
+
+* Sun Feb 10 16:19:07 EET 2002
+  Version 1.3 teki degisiklikler:
+  - Genel fonksiyonlar MTA 'ya bagli kodlardan arindirildi.
+
+  - Qmail syslog destegi verildi
+
+  - Sendmail destegi verildi
+
+  - Code'a onceki kaldigi yeri hatirlamasi icin gerekli degisikliker yapildi.
+    Boylece log dosyalarinizi rotate etmenize gerek kalmadi
+
+
+* Tue Feb  5 00:43:45 EET 2002
+  Version 1.2 deki degisiklikler:
+  - Ignore dosyasi icin wildcard destegi verildi
+
+  - Hafiza akitimlari temizlendi.
+    (Geoff Mitchell 'e tesekkurler)
+
+  - SPAMNUMBER  artik code'un icine gomulu degil. Boylece istediginiz gibi SPAMNUMBER sayisini
+    degistireblirsiniz.
+
+* Tue Feb  2 02:30:40 EET 2002
+  Bakim versiyonu: 1.1
+
+* Thu Jan 31 03:32:10 EET 2002
+  Ilk public versiyon

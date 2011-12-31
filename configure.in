@@ -1,0 +1,45 @@
+# Process this file with autoconf to produce a configure script.
+
+AC_INIT(spamguard, 1.8, core@enderunix.org)
+AC_CANONICAL_SYSTEM
+AC_CONFIG_SRCDIR([functions.c])
+AM_CONFIG_HEADER([config.h])
+#Sadece autoheader icin gerekli. Autoheader'i kullanacaksaniz AM_CONFIG_HEADER
+#kapatilip AC_CONFIG_HEADER acilacak!!!
+#AC_CONFIG_HEADER([config.h])
+AM_INIT_AUTOMAKE(spamguard, 1.8)
+
+# Checks for programs.
+AC_PROG_CC
+
+unset CDPATH
+dnl make /usr/local the default for the installation
+AC_PREFIX_DEFAULT(/usr/local)
+
+if test "x$prefix" = "xNONE"; then
+  prefix=$ac_default_prefix
+  ac_configure_args="$ac_configure_args --prefix $prefix"
+fi
+
+# Checks for libraries.
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([fcntl.h stdlib.h string.h strings.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_FUNC_STAT
+AC_CHECK_FUNCS([gethostname memset strcasecmp strdup strerror strstr])
+# CONFIGFILE degiskenini config.h'ta tanimla
+AC_DEFINE_UNQUOTED(CONFIGFILE, "${prefix}/etc/spamguard/spamguard.conf", [Configuration file path])
+AC_DEFINE_UNQUOTED(CONFIGFILE, "${prefix}/etc/spamguard/spamguard_qsheff.conf", [qsheff configuration file path])
+AC_OUTPUT([
+Makefile
+tr/Makefile
+spamguard.conf
+spamguard_qsheff.conf
+])

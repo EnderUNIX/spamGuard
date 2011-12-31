@@ -1,0 +1,36 @@
+POST-INSTALL Instructions for EnderUNIX spamGuard v.1.9
+====================================================================
+
+This file provides instructions on running spamGuard on UNIX (and
+UNIX-like) system.  More detailed information and instructions can
+be found in EnderUNIX website:
+(http://www.enderunix.org/spamguard/spamguard-1.9/POST-INSTALL).
+
+It is recommended that you read, or at least skim through, ALL of
+the instructions in this file before attempting to RUN the software.
+
+
+Configuring the environment
+-----------------------------------------------
+
+Run the following command to add a cron job for spamGuard
+
+# crontab -e
+
+Add the following line:
+
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/local/bin/spamguard 
+
+For using exim support:
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/local/bin/spamguard -f path_to_exim.log
+
+For using qSheff support:
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/local/bin/spamguard -f path_to_qsheff.log
+
+See spam-ignore.txt.sample and qsheff_ignore.sample.
+Have a look at it to get an idea.
+
+See FAQ file for Frequently Asked Questions.
+
+EnderUNIX Software Development Team @ Istanbul/Turkey staff at enderunix dot org
+http://www.enderunix.org

@@ -1,0 +1,24 @@
+Digital Unix.
+--------------------
+
+Digital Unix'te spamGuard calistirilinca, spamGuard
+su sekilde bir hata mesaji dondururse:
+
+[1200]#/usr/local/bin/spamguard -w 50 -b 100 -p 2000
+Unaligned access pid=31946 <spamguard> va=0x14000d23c pc=0x3ff8019ce0c ra=0x3ff800d7134 inst=0xa560fff8
+Unaligned access pid=31946 <spamguard> va=0x14001607c pc=0x3ff8019ce0c ra=0x3ff800d7134 inst=0xa560fff8
+Unaligned access pid=31946 <spamguard> va=0x14001631c pc=0x3ff8019ce0c ra=0x3ff800d7134 inst=0xa560fff8
+
+
+Cozum:
+---------
+SpamGuard'i calistirmadan once  "/usr/bin/uac p 0" (tirnak isaretleri yok) komutunu calistirin.
+crontab girdiniz su sekilde olmali: (hepsi bir satirda)
+
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/bin/uac p 0 ;
+/usr/local/bin/spamguard -w 50 -b 100 -p 2000
+
+
+Krediler:
+--------
+"Juan Enciso" <jenciso@isp.qnet.com.pe>, bu cozumu urettigi icin tesekkurler.

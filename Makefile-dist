@@ -1,0 +1,18 @@
+CC = gcc
+CFLAGS = -O2 --pipe  -g
+
+OBJECTS= loadconfig.o functions.o parser.o wildmat.o hash.c qsheff_parser.c
+
+all: 	$(OBJECTS)
+	gcc -o spamguard main.c $(OBJECTS)
+
+install:
+	cp -rp spamguard /usr/local/bin/
+	cp -rp spamguard.conf.sample /usr/local/etc/
+	cp -rp spamguard_qsheff.conf.sample /usr/local/etc/
+	cp -rp spam-ignore.txt.sample /usr/local/etc/
+	cp -rp qsheff_high /usr/local/etc/
+	cp -rp qsheff_ignore /usr/local/etc/
+
+clean:
+	rm -f spamguard *.core *.o *~

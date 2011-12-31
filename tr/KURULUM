@@ -1,0 +1,134 @@
+EnderUNIX spamGuard'i kurmak icin
+====================================================================
+
+Bu dosya spamGuard'i UNIX sisteminizde nasil derleyeceginizi ve
+kuracaginizi anlatmaktadir. Daha detayli bilgiyi EnderUNIX web
+sitesinde bulabilirsiniz
+(http://www.enderunix.org/spamguard/).
+
+En azindan bu dosyayi okumaniz ya da bir goz gezdirmeniz tavsiye
+edilmektedir!
+
+
+Derlemek ve KURMAK 
+-----------------------------------------------
+
+1.   root kullanicisi olarak  yazilimi aciniz ve dizini degistiriniz:
+
+	# tar -zxfz spamguard-VERSION.tar.gz 
+ 	# cd spamguard-VERSION
+
+2.   # ./autogen.sh
+
+3.   # ./configure
+
+4.   Kullandiginiz konsolda:
+
+     # make
+
+     Eger hersey duzgun giderse butun calistirilabilir dosyalar hazir demektir.
+
+5.   Derlediginiz yazilimi kurun
+
+     # make install
+
+     Calistirilabilir dosya /usr/local/bin dizinine kurulacaktir.
+     Ayrica spamguard.conf dosyasi da  /usr/local/etc/spamguard dizine
+     kurulacaktir.
+
+6.   SpamGuard dosyasini duzenleyin. Eger spamGuard yapilandirma dosyasi /usr/local/etc/spamguard dizininden
+     den baska bir dizindeyse calisma esnasinda -f secenegi ile bunu belirtmelisiniz.
+
+	Dosyadaki degiskenler:
+	logtype = "qmail"
+		Log tipiniz: Ornek olarak qmail, qsheff, sendmail, postfix, exim
+
+	logfile = "/var/log/qmail/current"
+		 Log dosyalarinizin yeri:
+
+		Burada onemli olan bir mevzu da log dosyalarinizin
+		buyuklugunu mumkun oldugunca buyuk tutun.  Mesela
+		qmail'i multilog destegi ile kullaniyorsaniz
+		qmail-send/log/run file dosyasinda s parameteresi
+		ile oynamalisiniz (Hepsi bir satirda olacak sekilde)
+
+		#!/bin/sh 
+		exec /usr/local/bin/setuidgid qmaill \
+		/usr/local/bin/multilog  t s5000000  \
+		/var/log/qmail
+
+	ignorefile = "/usr/local/etc/spam-ignore.txt" #
+		Ignore dosyanizin yeri. Bu dosyadaki adresler kesinlikle spamguard tarafindan engellenmez.
+	highfile = "/usr/local/etc/spam-high.txt" #
+		sadece "pcnt" degerini asan adresleri badmailfile dosyasina eklemek icin kullanilir. pcnt degerini asmayan kullanicilar
+		"badmailfile" eklenmez.
+
+	badmailfile = "/var/qmail/control/badmailfrom"
+		MTA 'nizin blacklist dosyasinin yeri.  Ornek olarak:
+		/var/qmail/control/badmailfrom; 
+
+		eger sendmailse,
+		/etc/mail/access; 
+
+		eger postfix kullaniyorsaniz
+		/usr/local/etc/postfix/access
+
+	sysadmin = "spam-notify@somedomain.com"
+		Spam aktiviteleri ile ilgili maili alacak sistem
+		yoneticisi.
+
+
+	hostname = "enderunix.org"
+		Eger gonderen kisiminda sadece kullanici adi varsa
+		bu hostname gonderen kismina eklenecektir. Mesela
+		from = <root> ise boylece mail adresi 
+		from = <root@enderunix.org> olacaktir.
+		
+
+	mail_command = "/usr/bin/mail"
+		Mail binarysinin oldugu dosya.  Solaris  kullanicilar
+		mail yerine mailx komutunu tercih etmelidirler!
+
+
+	makemap_command = "makemap hash /etc/mail/access < /etc/mail/access"
+	
+		Sadece Postfix ve Sendmail kullanicilari icin.
+
+	statfile = "/usr/local/etc/spamguard.stat";
+		Stat dosyasi. spamGuard'in kendisinin calismasi
+		icin.
+
+	wcnt = 40
+		Warning esik degeri.
+
+	bcnt = 50
+		Block esik degeri
+
+	pcnt = 100
+		Paranoid esik degeri
+
+	enable_subj_filt = 0
+                Bundan sonraki satirlar sadece qSheff yapilandirmasi icindir. Eger qSheff kullanmiyorsaniz
+		lutfen enable_subj_filt degerini 0 yaparak bu ozelligi devre disi birakiniz. Bu degere 1
+		verirseniz sadece konu filtreleme ozelligini aktiflestirmis olursunuz. Yani qsheff.rules
+		dosyasina eklenecek olan kurallar olusturulurken e-postanin konusu oldugu gibi kullanilir.
+		Eger bazi e-postalarinizin konu kismina [!! SPAM], [?? Probable Spam], [!!! VIRUS]
+		gibi sozcukler ekleniyorsa baska yazilimlar tarafindan, o zaman bu degeri 2 yapmalisiniz.
+		Bu sayede trim_subj_str icerisine yazdiginiz sozcukler e-postalarin konularindan
+		atildiktan olusturulan kurallar qsheff.rules dosyasina yazilacaktir.Ornegin, "[!! SPAM] Mortgage"
+		degil, "Mortgage" icin olustulan kural qsheff.rules dosyasina yazilir.
+
+        qsheff_rules_file = "/usr/local/etc/qsheff-II/qsheff.rules"
+               enable_subj_filt degeri 0 ise bu secenegi dikkate almayin. enable_subj_filt degeri
+		1 veya 2 ise burada belirtilen yol sayesinde qsheff.rules dosyasi guncellenir.
+
+        trim_subj_str = "[!! SPAM] ,[?? Probable Spam] ,[!!! VIRUS] ";
+		enable_subj_filt degeri 0 veya 1 ise bu secenegi dikkate almayiniz. enable_subj_filt 2 ise,
+		burada virgulle ayrilmis sekilde belirtilen sozcukler e-postalarin konularindan atilacaktir.
+		Bosluklara lutfen dikkat ediniz. Burdaki ornekte 1. sozcuk "[!! SPAM] ", 2. sozcuk [?? Probable Spam] " ve son sozcuk ise "[!!! VIRUS] ".
+
+7.   Hepsi bu kadar simdi KURULUM-SONRASI dokumanini kurulum sonrasi
+ne yapilmasi gerektigini ogrenmek icin okuyunuz.
+     
+
+http://www.enderunix.org

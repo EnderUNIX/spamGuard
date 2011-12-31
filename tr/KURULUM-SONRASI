@@ -1,0 +1,32 @@
+EnderUNIX spamGuard v.1.8 icin kurulum sonrasi dokumani:
+====================================================================
+
+Bu dosya spamGuard 'i UNIX sistemlerde calistirmak icin gerekli
+kisimlari icerir.  Daha detayli bilgi EnderUNIX'in web sitesinde:
+(http://www.enderunix.org/spamguard/spamguard-1.6/tr/KURULUM-SONRASI)
+bulabilirsiniz.
+
+
+Gerekli seyler:
+ -----------------------------------------------
+
+Crontab 'a spamGuard'in calisabilmesi icin gerekli satirlari eklemek
+icin asagidaki komutu calisitirin:
+
+# crontab -e
+
+Ve asagidaki satirlari ekleyin:
+
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/local/bin/spamguard 
+
+logtype = exim ise eklenmesi gereken satir asagidaki gibi olmalidir:
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/local/bin/spamguard -f path_to_exim.log
+
+logtype = qSheff ise eklenmesi gereken satir asagidaki gibi olmalidir:
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/local/bin/spamguard -f path_to_qsheff.log
+
+spam-ignore.txt.sample dosyasini da fikir sahibi olmak icin bakiniz.
+
+
+EnderUNIX Software Development Team @ Istanbul/Turkey roots@enderunix.org
+- http://www.enderunix.org 

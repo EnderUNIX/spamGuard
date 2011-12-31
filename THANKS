@@ -1,0 +1,31 @@
+Sameh Attia <sameh.attia at tedata.net>
+	for Makefile.in sysconfdir patch.
+
+Geoff Mitchell	
+	Fixed some memory leaks.
+
+Juan Enciso <jenciso isp.qnet.com.pe>
+	Notified us about the change to use
+	spamGuard on Digital UNIX systems. 
+
+Metin Kaya (metin  ~ EnderUNIX.org)
+        for his support.
+
+Atilim BOY (aboy ~ EnderUNIX.org)
+	Software logos.
+
+Baris SIMSEK (simsek ~ EnderUNIX.org)
+	gnu style configure scripts.
+
+Afsin TASKIRAN (afsin  ~ EnderUNIX.org),
+Bakir EMRE     (emre   ~ EnderUNIX.org),
+Gokhan ALKAN   (gokhan ~ EnderUNIX.org)
+	for testing the software.
+
+Ozkan KIRIK (ozkan ~ EnderUNIX.org)
+	special thanks for everything.
+
+Murat BALABAN (murat ~ EnderUNIX.org)
+	for his perfectness.
+
+and EnderUNIX members for their valuable friendship...

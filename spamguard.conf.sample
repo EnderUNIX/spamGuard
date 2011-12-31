@@ -1,0 +1,16 @@
+logtype = "qmail"
+logfile = "/var/log/qmail/current"
+ignorefile = "/usr/local/etc/spamguard/spam-ignore.txt"
+badmailfile = "/var/qmail/control/badmailfrom"
+highfile = "/usr/local/etc/spamguard/spam-high.txt"
+sysadmin = "spamntyf@esomedomain.org"
+hostname = "somedomain.org"
+mail_command = "/usr/bin/mail"
+makemap_command = "makemap hash /etc/mail/access < /etc/mail/access"
+wcnt = 40
+bcnt = 50
+pcnt = 100
+statfile = "/usr/local/etc/spamguard/spamguard.stat"
+enable_subj_filt = 0
+qsheff_rules_file = "/usr/local/etc/qsheff-II/qsheff.rules"
+trim_subj_str = "[!! SPAM] ,[?? Probable Spam] ,[!!! VIRUS] ";

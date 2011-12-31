@@ -1,0 +1,16 @@
+logtype = "exim"
+logfile = "/var/spool/exim/log/mainlog"
+ignorefile = "./spam-ignore.txt"
+badmailfile = "/usr/exim/blacklist"
+highfile = "./spam-high.txt"
+sysadmin = "spamntyf@esomedomain.org"
+hostname = ""
+mail_command = "/usr/bin/mail"
+makemap_command = "makemap hash /etc/mail/access < /etc/mail/access"
+wcnt = 5
+bcnt = 10
+pcnt = 50
+statfile = "./spamguard.stat"
+enable_subj_filt = 0
+qsheff_rules_file = "qsheff.rules"
+trim_subj_str = "[!! SPAM] ,[?? Probable Spam] ,[!!! VIRUS] ";

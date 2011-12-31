@@ -1,0 +1,27 @@
+#spamguard 1.8 Configuration file 
+
+#logtype     = "sendmail"
+logtype      = "qmail" #log types: qmail, qsheff, sendmail, postfix
+#logfile     = "/var/log/maillog"
+logfile      = "/var/log/qmail/qmail-send/current"
+ignorefile   = "@prefix@/etc/spamguard/spam-ignore.txt"
+#badmailfile = "/etc/mail/access" #  For Sendmail
+badmailfile  = "/var/qmail/control/badmailfrom" 
+highfile     = "@prefix@/etc/spamguard/spam-high.txt" #the addresses in this file  will be added in badmail file  when they sent mail more than pcnt value
+
+sysadmin = "sysadmin@EnderUNIX.org"
+hostname = "EnderUNIX.org"
+
+# use mailx program for Solaris. Please check your "mail" path
+mail_command    = "/bin/mail"
+makemap_command = "/usr/sbin/makemap hash /etc/mail/access < /etc/mail/access" #sendmail , postfix only
+
+wcnt = 	40	# warning count
+bcnt = 100	# block count
+pcnt = 300      # paranoid count
+
+statfile = "@prefix@/etc/spamguard/spamguard.stat"
+
+enable_subj_filt  = 0 # these lines for qsheff support.
+qsheff_rules_file = "/usr/local/etc/qsheff-II/qsheff.rules"
+trim_subj_str     = "[!! SPAM] ,[?? Probable Spam] ,[!!! VIRUS] ";

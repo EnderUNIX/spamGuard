@@ -1,0 +1,138 @@
+Making and Installing EnderUNIX spamGuard v.1.8
+====================================================================
+
+This file provides brief instructions on how to build and install
+spamGuard on UNIX (and UNIX-like) system.  More detailed information
+and instructions can be found in EnderUNIX website:
+(http://www.enderunix.org/spamguard/).
+
+It is recommended that you read, or at least skim through, ALL of
+the instructions in this file before attempting to build the software.
+
+
+Making and Installing 
+-----------------------------------------------
+
+1.   Unpack the software and change directory as root:
+
+	# tar -zxfz spamguard-VERSION.tar.gz 
+	# cd spamguard-VERSION
+
+2.   # ./autogen.sh
+
+3.   # ./configure 
+
+4.   Type:
+
+     # make
+
+     If all goes well, all binaries will be compiled.
+
+5.   Install the binary.  
+
+     # make install
+
+     Binary will be installed in /usr/local/bin.
+     A sample spamguard.conf will be installed in /usr/local/etc/spamguard.
+     
+6.   Copy spamguard.conf.sample to some path to your liking.
+     Note that if you specify some other location than /usr/local/etc/spamguard,
+     you'll need to supply path to spamguard.conf via the -f swicth
+     at run time.
+
+     Parameters in spamguard.conf file:
+
+	logtype = "qmail"
+		Your log type. Possible values are: qmail, qsheff,
+		sendmail, postfix
+
+	logfile = "/var/log/qmail/current"
+		Location of your log file.
+
+		An important thing to note here is that; keep the
+		size of your log file large.  If you're using qmail
+		with multilog, you can set this in the qmail-send/log/run
+		file with the s (size) parameter like this: (all
+		in one line) 
+
+		#!/bin/sh 
+                exec /usr/local/bin/setuidgid  \
+		qmaill /usr/local/bin/multilog  t s5000000 \
+		/var/log/qmail
+
+		if you're using syslog, change the rotate size.
+
+	ignorefile = "/usr/local/etc/spam-ignore.txt" #
+		Location of your ignore file. Ignore file will hold
+		the addresses to ignored by spamguard.
+
+	highfile = "/usr/local/etc/spam-high.txt" 
+		the addresses in this file  will be added in badmail file 
+		when they sent mail more than pcnt value
+
+	badmailfile = "/var/qmail/control/badmailfrom"
+		Your MTA's blacklist'ed senders file.  If you're
+		using qmail most probably this will be:
+		/var/qmail/control/badmailfrom;
+
+                if sendmail : 
+		/etc/mail/access; 
+               
+		if postfix it'll be
+		/usr/local/etc/postfix/access
+
+	sysadmin = "spam-notify@somedomain.com"
+		The person who will receive spammer activity reports.
+
+	hostname = "enderunix.org"
+		If no hostname is found in the sender line, this
+		will be appended to the username. 
+                e.g from= <root> will be from = <root@hostname>.
+
+	mail_command = "/usr/bin/mail"
+		Where's your mail/mailx binary.  Solaris users
+		should use mailx instead of mail.
+
+
+	makemap_command = "makemap hash /etc/mail/access </etc/mail/access"
+		For Postfix and Sendmail users only.
+
+	statfile = "/usr/local/etc/spamguard.stat";
+		Stat file. Internal use.
+
+	wcnt = 40
+		Warning threshold.
+
+	bcnt = 50
+		Block threshold
+
+	pcnt = 100
+		Paranoid threshold.
+
+	enable_subj_filt = 0
+		These lines are for qSheff configuration. If qSheff does not installed on your system,
+                please disable subject filtering by assigning 0 to enable_subj_filt value. If 1 is
+                assigned to enable_subj_filt value, then subject filtering will be enabled (subjects
+                will NOT be trimmed). If there are strings, such as [!! SPAM], [?? Probable Spam],
+                [!!! VIRUS], which are appended front of subjects, then make enable_subj_filt
+                value 2 to enabling subject trimming. Subjects will be added as rules to qsheff.rules file
+		after trimmed according to strings included in trim_subj_str.
+
+	qsheff_rules_file = "/usr/local/etc/qsheff-II/qsheff.rules"
+		If enable_subj_filt value equals to 0, do not care this option. If subject filtering is
+		enabled (enable_subj_filt is equal to 1 or 2), then this path will be used for adding new
+		rules to qsheff.rules file.
+
+	trim_subj_str = "[!! SPAM] ,[?? Probable Spam] ,[!!! VIRUS] ";
+                If enable_subj_filt value equals to 0 or 1, do not care this option. If enable_subj_filt
+		value is 2, then strings included by trim_subj_str will be cutted from subjects. Please
+		pay attention to this: the strings must be seperated by a comma. For instance: the 1st string
+		is "[!! SPAM] ", the 2nd string is "[?? Probable Spam] ", and the last one is "[!!! VIRUS] ".
+		It's hope that you cared about the blank characters.
+
+7.   That's it!
+     Now, read POST-INSTALL document for instructions after
+     installation.
+
+
+http://www.enderunix.org

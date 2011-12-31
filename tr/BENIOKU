@@ -1,0 +1,41 @@
+                spamGuard 1.9 BENIOKU
+        -----------------------------------------
+Gunumuzde e-posta sistem yoneticilerinin hemen hemen en buyuk problemi
+istenmeyen e-postalardir. Bu yuzden EnderUNIX Yazilim Gelistirme Takimi
+e-posta kayit dosyalarinizi inceleyerek buradaki tehlikeli hareketleri
+takip eden bir program yazdi. spamGuard 'in tek amaci istenmeyen e-posta
+uretenleri durdurmaktr. Zamanla program Qmail (qSheff, syslog ve multilog)
+, sendmail, posftix, ve exim 'i destekleyecek sekilde yazildi.
+
+Mantik:
+----------
+
+1. spamGuard crontab vasitasiyla belirli zaman araliklari ile calistirilir.
+2. spamGuard mailloglarini tarayarak hangi kullanicin ne kadar mail gonderdigini   bulur.
+3. spamGuard ignore dosyasindan onemsenmeyecek e-posta adreslerini ve
+   badmailfiles dosyasini yukler.
+4. Esik degerini asan kullanicilar istenmeyen e-posta ureticisi olarak
+   belirlenir ve badmailfrom dosyasina eklenir. (Esik degeri olarak 3 degisik
+   deger vardir: warning, block ve paranoid)
+5. Eger bir istenmeyen e-posta ureticisi belirlenmisse bu kisi sistem
+   yoneticisine e-posta yoluyla haber verilir.
+6. Sendmail icin access veritabani dosyasi guncellenir.
+
+spamGuard 85 MB lik bir log dosyasini 10 saniyeden az bir surede isler.
+
+Test edilen sistemler:
+FreeBSD 4-STABLE, 6.2-STABLE
+Solaris 2.7-Sparc
+Solaris 8-Sparc
+Slackware Linux 8.0
+RedHat 7.2
+Digital UNIX
+
+Eger sisteminiz DigitalUnix ise lutfen BENIOKU.DigitalUnix dosyasina bakiniz.
+
+Sorulariniz icin:
+cihangir@Akademi.EnderUNIX.org
+
+
+EnderUNIX SDT @ Istanbul/Turkey
+http://www.enderunix.org

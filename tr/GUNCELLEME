@@ -1,0 +1,3 @@
+
+Eger spamguard'i eski bir versiyondan 1.7 veya daha ustu versiyonuna guncelleyecekseniz
+Kurulumdan sonra /usr/local/etc/spamguard* dosyalarini /usr/local/etc/spamguard dizinine kopyalayiniz.

@@ -1,0 +1,34 @@
+
+			FREQUENTLY ASKED QUESTIONS
+			--------------------------
+
+Q: Although the e-mail address is in my ignore file, spamguard still adds this
+   address to the badmailfrom file, is there a bug?
+
+
+A: [for spamGuard Vs. >= 1.7] This behaviour has been changed in release 1.7.
+   The e-mail address is in ignore file never be blocked. The new config file
+   "highfile" will be used to block the addressed send mail more than pcnt
+   value.
+
+   [for old versions] No, it's not a bug, it's a feature. As explained in the
+   README, there are three threshold values:
+
+   If someone sends less mails than warning value, he's simply discarded,
+
+   If someone sends more mails than warning value, less than block, he's not
+   blocked, but a warning mail is sent to the sysadmin.
+
+   If someone sends more mails than block value and less than paranoid value, 
+   the address is checked against ignore list and badmailfrom, if the
+   address is existent on the lists, it's not blocked, if not it's added to
+   the badmailfrom file.
+
+   If someone sends even more mails than paranoid value, it's checked against
+   badmailfrom to see whether this address has been added to it before. Note
+   that the address is not checked against ignore file here. Paranoid mode
+   means "I don't care whether he's in my ignore list, if he sends this much
+   mails, nuke the blooddy spammer!".
+
+   So, you do have a chance to specify paranoid threshold to a very high value,
+   say 1000000, if you don't want the "paranoid functionality".

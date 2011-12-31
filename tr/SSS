@@ -1,0 +1,11 @@
+		SIK SORULAN SORULAR
+                -------------------
+S: spamGuard, e-posta adreslerini gozardi edilecekler dosyasinda yer almasina
+   ragmen "badmailfrom" dosyasina ekliyor. Bu bir yazilim hatasi mi?
+
+C: [SpamGuard Vs. >= 1.7] Bu durum 1.7 surumuyle duzenlendi. Gozardi edilecekler   dosyasindaki e-posta adresleri kesinlikle engellenmez."highfile" dosyasindaki
+   e-posta adreslerinden "pcnt" degerinden daha fazla sayida e-posta alinirsa bu
+   e-posta adresi "badmailfrom" dosyasina eklenir.
+
+   [Onceki Surumler]: Hayir, bu bir hata degil, ozelliktir.  BENIOKU dosyasinda
+   gerekli aciklamalar bulunmaktadir.
